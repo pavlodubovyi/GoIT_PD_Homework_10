@@ -6,8 +6,7 @@ class Field:
 
 
 class Phone(Field):
-    def __init__(self, value) -> None:
-        super().__init__(value)
+    pass
 
 
 class Name(Field):
@@ -16,9 +15,11 @@ class Name(Field):
 
 
 class Record:
-    def __init__(self, name: Name, *phones: list, **kwargs) -> None:
+    def __init__(self, name: Name, phone: Phone=None) -> None:
         self.name = name
-        self.phones = list(phones)
+        self.phones = list()
+        if phone:
+            self.phones.append(phone)
     
     def add_phone(self, number: Phone):
         phone_number = Phone(number)
